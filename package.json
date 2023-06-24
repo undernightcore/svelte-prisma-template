@@ -37,6 +37,7 @@
 	"type": "module",
 	"dependencies": {
 		"@prisma/client": "^4.16.1",
+		"@vinejs/vine": "^1.4.1",
 		"bcrypt": "^5.1.0",
 		"jsonwebtoken": "^9.0.0"
 	}
