@@ -12,8 +12,8 @@ export const POST = (async ({ request }) => {
 		.validate(rawBody, {
 			messagesProvider: new SimpleMessagesProvider(loginValidator.messages, {})
 		})
-		.catch((error) => {
-			throw error(400, error.messages[0]);
+		.catch((e) => {
+			throw error(400, e.messages[0]);
 		});
 
 	const foundUser = await prisma.user.findUnique({ where: { email } });
