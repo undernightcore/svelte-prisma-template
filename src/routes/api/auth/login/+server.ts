@@ -6,7 +6,7 @@ import { error, json, type RequestHandler } from '@sveltejs/kit';
 import vine, { SimpleMessagesProvider } from '@vinejs/vine';
 
 export const POST = (async ({ request }) => {
-	const rawBody = await request.json();
+	const rawBody = await request.json().catch(() => ({}));
 	const { email, password } = await vine
 		.compile(loginValidator.schema)
 		.validate(rawBody, {

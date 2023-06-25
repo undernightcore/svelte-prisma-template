@@ -2,8 +2,8 @@ import { error, type RequestEvent } from '@sveltejs/kit';
 import { getUserIdFromJwt } from './jwt.utils';
 import { prisma } from '../services/prisma.service';
 
-export async function getAuthenticatedUser({ request }: RequestEvent) {
-	const authHeader = request.headers.get('Authorization') ?? '';
+export async function getAuthenticatedUser({ headers }: Request) {
+	const authHeader = headers.get('Authorization') ?? '';
 	const token = authHeader.substring(7);
 
 	if (!token) throw error(401, 'You are not sending authentication token');
